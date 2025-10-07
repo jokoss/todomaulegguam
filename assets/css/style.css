@@ -553,10 +553,28 @@ a:hover {
   padding: var(--space-8);
   border-radius: var(--radius-2xl);
   box-shadow: var(--shadow-lg);
-  transition: all var(--transition-normal);
+  transition: transform var(--transition-normal), box-shadow var(--transition-normal);
   border: 1px solid var(--gray-200);
   position: relative;
   overflow: hidden;
+}
+
+/* nicer bottom accent shadow instead of white bar */
+.service-card::after {
+  content: '';
+  position: absolute;
+  left: 20px;
+  right: 20px;
+  bottom: 10px;
+  height: 10px;
+  background: radial-gradient(ellipse at center, rgba(0,0,0,0.15), rgba(0,0,0,0) 70%);
+  filter: blur(4px);
+  opacity: 0;
+  transition: opacity var(--transition-normal);
+}
+
+.service-card:hover::after {
+  opacity: 1;
 }
 
 .service-card::before {
@@ -725,9 +743,34 @@ a:hover {
 /* Contact Section */
 .contact-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(12, 1fr);
   gap: var(--space-6);
   margin-bottom: var(--space-12);
+}
+
+/* Default each card spans 3 columns on desktop */
+.contact-card {
+  grid-column: span 3;
+}
+
+/* Make Email Us card span 6 columns */
+.contact-card--wide {
+  grid-column: span 6;
+}
+
+@media (max-width: 1024px) {
+  .contact-card {
+    grid-column: span 6;
+  }
+  .contact-card--wide {
+    grid-column: span 12;
+  }
+}
+
+@media (max-width: 640px) {
+  .contact-card {
+    grid-column: span 12;
+  }
 }
 
 .contact-card {
@@ -864,6 +907,13 @@ a:hover {
 
 .footer-links a:hover {
   color: white;
+}
+
+/* Subtle separators for footer links */
+.footer-links a + a::before {
+  content: '·';
+  margin: 0 var(--space-3);
+  color: var(--gray-500);
 }
 
 /* Back to Top Button */
