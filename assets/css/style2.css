@@ -319,6 +319,13 @@ body {
 
 .hero-content {
   z-index: 2;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Move the 24/7 badge to the right */
+.hero-badge {
+  align-self: flex-end;
 }
 
 .hero-badge {
