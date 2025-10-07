@@ -231,8 +231,8 @@ body {
 }
 
 .nav-logo {
-  width: 40px;
-  height: 40px;
+  width: 56px;
+  height: 56px;
   border-radius: var(--radius-md);
 }
 
@@ -326,6 +326,7 @@ body {
 /* Move the 24/7 badge to the right */
 .hero-badge {
   align-self: flex-end;
+  margin-left: auto; /* hard align to the right */
 }
 
 .hero-badge {
