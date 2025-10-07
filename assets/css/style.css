@@ -723,9 +723,27 @@ a:hover {
 /* Contact Section */
 .contact-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(12, 1fr);
   gap: var(--space-6);
   margin-bottom: var(--space-12);
+}
+
+/* Default: three cards across (4 columns each) */
+.contact-card { grid-column: span 4; }
+
+/* Email card stays same width to align with row */
+.contact-card--wide { grid-column: span 4; }
+
+/* Map full width */
+.contact-card--fullwidth { grid-column: span 12; }
+
+@media (max-width: 1024px) {
+  .contact-card { grid-column: span 6; }
+  .contact-card--fullwidth { grid-column: span 12; }
+}
+
+@media (max-width: 640px) {
+  .contact-card { grid-column: span 12; }
 }
 
 .contact-card {
@@ -788,8 +806,8 @@ a:hover {
   padding: var(--space-8);
   border-radius: var(--radius-xl);
   box-shadow: var(--shadow-lg);
-  max-width: 800px;
-  margin: 0 auto;
+  max-width: none;
+  margin: 0;
 }
 
 .service-hours h3 {
@@ -801,8 +819,16 @@ a:hover {
 
 .hours-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(12, 1fr);
   gap: var(--space-6);
+}
+
+/* two items centered at wider widths */
+.hours-grid > .hours-item { grid-column: span 6; }
+
+@media (max-width: 768px) {
+  .hours-grid { grid-template-columns: 1fr; }
+  .hours-grid > .hours-item { grid-column: auto; }
 }
 
 .hours-item {
