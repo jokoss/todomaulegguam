@@ -348,16 +348,7 @@ a:hover {
   overflow: hidden;
 }
 
-.hero::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="1" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
-  opacity: 0.1;
-}
+/* Removed gradient pattern from hero */
 
 .hero-content {
   position: relative;
@@ -396,6 +387,45 @@ a:hover {
   max-width: 600px;
   margin-left: auto;
   margin-right: auto;
+}
+
+/* Hero Icons */
+.hero-icons {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-8);
+  margin: var(--space-12) 0;
+  flex-wrap: wrap;
+}
+
+.hero-icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-4);
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: var(--radius-xl);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all var(--transition-normal);
+  min-width: 120px;
+}
+
+.hero-icon:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-4px);
+}
+
+.hero-icon span:first-child {
+  font-size: var(--text-3xl);
+  display: block;
+}
+
+.hero-icon span:last-child {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.9);
 }
 
 .cta-actions {
@@ -467,7 +497,7 @@ a:hover {
 
 /* Emergency Banner */
 .emergency-banner {
-  background: linear-gradient(135deg, var(--accent-600) 0%, var(--primary-700) 100%);
+  background: linear-gradient(135deg, var(--warning-500) 0%, var(--warning-600) 100%);
   color: white;
   padding: var(--space-8) 0;
   text-align: center;
@@ -643,43 +673,51 @@ a:hover {
 }
 
 .gallery-item {
-  background: white;
+  position: relative;
   border-radius: var(--radius-xl);
   overflow: hidden;
   box-shadow: var(--shadow-lg);
   transition: transform var(--transition-normal);
+  background: white;
 }
 
 .gallery-item:hover {
   transform: translateY(-4px);
 }
 
-.gallery-placeholder {
-  padding: var(--space-12);
-  text-align: center;
-  background: linear-gradient(135deg, var(--gray-100), var(--gray-200));
-  min-height: 200px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.gallery-placeholder span {
-  font-size: var(--text-4xl);
-  margin-bottom: var(--space-4);
+.gallery-item img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
   display: block;
 }
 
-.gallery-placeholder h4 {
-  font-size: var(--text-xl);
-  margin-bottom: var(--space-2);
-  color: var(--gray-900);
+.gallery-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+  color: white;
+  padding: var(--space-6) var(--space-4) var(--space-4);
+  transform: translateY(100%);
+  transition: transform var(--transition-normal);
 }
 
-.gallery-placeholder p {
-  color: var(--gray-600);
+.gallery-item:hover .gallery-overlay {
+  transform: translateY(0);
+}
+
+.gallery-overlay h4 {
+  font-size: var(--text-xl);
+  margin-bottom: var(--space-2);
+  color: white;
+}
+
+.gallery-overlay p {
+  color: rgba(255, 255, 255, 0.9);
   margin: 0;
+  font-size: var(--text-sm);
 }
 
 /* Contact Section */
@@ -777,7 +815,8 @@ a:hover {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--space-4);
+  gap: var(--space-3);
+  text-align: center;
 }
 
 .footer-logo {
@@ -856,8 +895,21 @@ a:hover {
   }
 }
 
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
 .animate-fade-in-up {
   animation: fadeInUp 0.8s ease-out;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
 }
 
 /* Responsive Design */
@@ -868,6 +920,24 @@ a:hover {
   
   .hero p {
     font-size: var(--text-lg);
+  }
+  
+  .hero-icons {
+    gap: var(--space-4);
+    margin: var(--space-8) 0;
+  }
+  
+  .hero-icon {
+    min-width: 100px;
+    padding: var(--space-3);
+  }
+  
+  .hero-icon span:first-child {
+    font-size: var(--text-2xl);
+  }
+  
+  .hero-icon span:last-child {
+    font-size: var(--text-xs);
   }
   
   .cta-actions {
