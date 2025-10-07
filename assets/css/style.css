@@ -467,7 +467,7 @@ a:hover {
 
 /* Emergency Banner */
 .emergency-banner {
-  background: linear-gradient(135deg, var(--warning-500) 0%, var(--warning-600) 100%);
+  background: linear-gradient(135deg, var(--accent-600) 0%, var(--primary-700) 100%);
   color: white;
   padding: var(--space-8) 0;
   text-align: center;
