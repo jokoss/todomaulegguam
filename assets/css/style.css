@@ -18,16 +18,14 @@
   --primary-900: #1e3a8a;
   
   /* Accent Colors - Green instead of Red */
-  /* Accent Colors - Cyan to complement blue */
-  --accent-500: #06b6d4; /* cyan-500 */
-  --accent-600: #0891b2; /* cyan-600 */
-  --accent-700: #0e7490; /* cyan-700 */
+  --accent-500: #10b981;
+  --accent-600: #059669;
+  --accent-700: #047857;
   
   /* Warning/Emergency - Orange instead of Red */
-  /* Secondary Accent (teal) for notices instead of orange */
-  --warning-500: #14b8a6; /* teal-500 */
-  --warning-600: #0d9488; /* teal-600 */
-  --warning-700: #0f766e; /* teal-700 */
+  --warning-500: #f59e0b;
+  --warning-600: #d97706;
+  --warning-700: #b45309;
   
   /* Success/Positive */
   --success-500: #10b981;
@@ -553,28 +551,10 @@ a:hover {
   padding: var(--space-8);
   border-radius: var(--radius-2xl);
   box-shadow: var(--shadow-lg);
-  transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+  transition: all var(--transition-normal);
   border: 1px solid var(--gray-200);
   position: relative;
   overflow: hidden;
-}
-
-/* nicer bottom accent shadow instead of white bar */
-.service-card::after {
-  content: '';
-  position: absolute;
-  left: 20px;
-  right: 20px;
-  bottom: 10px;
-  height: 10px;
-  background: radial-gradient(ellipse at center, rgba(0,0,0,0.15), rgba(0,0,0,0) 70%);
-  filter: blur(4px);
-  opacity: 0;
-  transition: opacity var(--transition-normal);
-}
-
-.service-card:hover::after {
-  opacity: 1;
 }
 
 .service-card::before {
@@ -743,34 +723,9 @@ a:hover {
 /* Contact Section */
 .contact-grid {
   display: grid;
-  grid-template-columns: repeat(12, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: var(--space-6);
   margin-bottom: var(--space-12);
-}
-
-/* Default each card spans 3 columns on desktop */
-.contact-card {
-  grid-column: span 3;
-}
-
-/* Make Email Us card span 6 columns */
-.contact-card--wide {
-  grid-column: span 6;
-}
-
-@media (min-width: 1024px) {
-  /* Force wide Email card even if class missing due to cache */
-  .contact-grid .contact-card:nth-child(2) { grid-column: span 6; }
-  .contact-card--wide a { white-space: nowrap; }
-}
-
-@media (max-width: 1024px) {
-  .contact-card { grid-column: span 6; }
-  .contact-card--wide { grid-column: span 12; }
-}
-
-@media (max-width: 640px) {
-  .contact-card { grid-column: span 12; }
 }
 
 .contact-card {
@@ -806,20 +761,26 @@ a:hover {
 .contact-card a {
   color: var(--primary-600);
   font-weight: 600;
-  display: inline-block;
-  max-width: 100%;
-  overflow-wrap: anywhere;
-  word-break: break-word;
-  text-decoration: none;
 }
 
-.contact-card p {
-  margin: 0 0 var(--space-2) 0;
+/* Make Service Area card span full width */
+.contact-card--fullwidth {
+  grid-column: span 12;
 }
 
-/* Ensure content stays within card */
-.contact-card {
+/* Map container styling */
+.map-container {
+  margin: var(--space-6) 0;
+  border-radius: var(--radius-lg);
   overflow: hidden;
+  box-shadow: var(--shadow-md);
+}
+
+.map-container iframe {
+  display: block;
+  width: 100%;
+  height: 300px;
+  border: none;
 }
 
 .service-hours {
@@ -907,13 +868,6 @@ a:hover {
 
 .footer-links a:hover {
   color: white;
-}
-
-/* Subtle separators for footer links */
-.footer-links a + a::before {
-  content: '·';
-  margin: 0 var(--space-3);
-  color: var(--gray-500);
 }
 
 /* Back to Top Button */
@@ -1059,6 +1013,10 @@ a:hover {
   
   .contact-card {
     padding: var(--space-6);
+  }
+  
+  .map-container iframe {
+    height: 250px;
   }
 }
 
