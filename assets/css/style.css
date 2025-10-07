@@ -758,19 +758,19 @@ a:hover {
   grid-column: span 6;
 }
 
+@media (min-width: 1024px) {
+  /* Force wide Email card even if class missing due to cache */
+  .contact-grid .contact-card:nth-child(2) { grid-column: span 6; }
+  .contact-card--wide a { white-space: nowrap; }
+}
+
 @media (max-width: 1024px) {
-  .contact-card {
-    grid-column: span 6;
-  }
-  .contact-card--wide {
-    grid-column: span 12;
-  }
+  .contact-card { grid-column: span 6; }
+  .contact-card--wide { grid-column: span 12; }
 }
 
 @media (max-width: 640px) {
-  .contact-card {
-    grid-column: span 12;
-  }
+  .contact-card { grid-column: span 12; }
 }
 
 .contact-card {
