@@ -1,0 +1,8 @@
+/* modern normalize: minimal reset */
+html{line-height:1.15;-webkit-text-size-adjust:100%}
+body{margin:0}
+main{display:block}
+h1{font-size:2em;margin:.67em 0}
+a{background-color:transparent}
+img{border-style:none;max-width:100%;height:auto}
+button,input,select,textarea{font-family:inherit;font-size:100%;line-height:1.15;margin:0}
